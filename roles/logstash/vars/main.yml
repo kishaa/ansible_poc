@@ -1,0 +1,68 @@
+---
+# vars file for /app/ansible/roles/logstash
+
+linux_groups:
+  'logstash':
+    state: present
+    gid: 1001
+
+linux_users:
+  'logstash':
+    home: '/app/logstash'
+    state: present
+    uid: 1002
+    gid: 1001
+
+linux_directories:
+  /app:
+    owner: '0'
+    group: '0'
+    mode: 0755
+  /app/logstash:
+    owner: 'logstash'
+    group: 'logstash'
+    mode: 2755
+  /app/logstash/data:
+    owner: 'logstash'
+    group: 'logstash'
+    mode: 2755
+  /app/logstash/logs:
+    owner: 'logstash'
+    group: 'logstash'
+    mode: 2755
+  /app/download:
+    owner: 'root'
+    group: 'root'
+    mode: 0755
+  /etc/logstash:
+    owner: 'root'
+    group: 'root'
+    mode: 0755
+  /etc/logstash/conf.d:
+    owner: 'logstash'
+    group: 'logstash'
+    mode: 0755
+  /usr/share:
+    owner: 'root'
+    group: 'root'
+    mode: 0755
+  /usr/share/logstash:
+    type: 'link'
+    owner: 'root'
+    group: 'root'
+    target: '/app/logstash'
+    mode: 0755
+
+linux_packages:
+  'java':
+    ensure: latest
+
+logstash_config_owner: 'logstash'
+logstash_config_user: 'logstash'
+logstash_config_app_home: '/app/logstash'
+logstash_config_app_data: '/app/logstash/data'
+logstash_config_logstash_yml: '/etc/logstash/logstash.yml'
+logstash_config_logstash_logs: '/app/logstash/logs'
+logstash_config_app_default: '/etc/default/logstash/'
+logstash_config_app_jvm.options: '/etc/logstash/jvm.options'
+logstash_config_app_startup.options: '/etc/logstash/startup.options'

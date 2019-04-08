@@ -1,0 +1,31 @@
+---
+  - name: Ensuring nginx.conf files
+    file:
+      path: "{{ nginx_config_nginx }}"
+      group: "{{ nginx_config_group }}"
+      user: "{{ nginx_config_owner }}"
+      mode: 0644
+
+  - name: Change dynamic modules path in nginx.conf file
+    lineinfile:
+      path: "{{ nginx_config_nginx }}"
+      regexp: '^include /usr/share/nginx/modules/*.conf;'
+      line: 'include /app/nginx/modules/*.conf;'
+
+  - name: Change html path in nginx.conf file
+    lineinfile:
+      path: "{{ nginx_config_nginx }}"
+      regexp: '^ root         /usr/share/nginx/html;'
+      line: ' root         /app/nginx/html;'
+
+  - name: Change access log paths in nginx.conf file
+    lineinfile:
+      path: "{{ nginx_config_nginx }}"
+      regexp: '^ access_log  /var/log/nginx/access.log  main;'
+      line: ' access_log  /var/log/nginx/access.log  main;'
+
+  - name: Change error log paths in nginx.conf file
+    lineinfile:
+      path: "{{ nginx_config_nginx }}"
+      regexp: '^error_log /var/log/nginx/error.log;'
+      line: 'error_log /app/nginx/logs/error.log;'

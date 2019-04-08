@@ -1,0 +1,6 @@
+---
+  - name: Install latest version of Java and nginx on machine
+    yum:
+      name: "{{ item.value.key }}"
+      state: "{{ item.value.ensure }}"
+    with_dict: "{{ linux_packages }}"

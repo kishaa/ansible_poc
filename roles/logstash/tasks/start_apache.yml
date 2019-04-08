@@ -1,0 +1,6 @@
+---
+  - name: Start and enable apache service
+    service:
+      name: httpd
+      state: restarted
+      enabled: yes
