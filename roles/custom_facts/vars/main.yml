@@ -1,0 +1,4 @@
+---
+# vars file for custom_facts
+include: /app/ansible_poc/roles/custom_facts/vars/group_vars/
+include:/app/ansible_poc/roles/custom_facts/vars/host_vars/

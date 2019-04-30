@@ -1,0 +1,47 @@
+---
+  - name: Custom facts play
+    hosts: linux
+    gather_facts: false
+    tasks:
+
+      - name: Creates a directiory
+        file:
+          path: /etc/ansible/facts.d/
+          recurse: yes
+          state: directory
+
+      - name: Copy custom facts to host machine
+        copy:
+          src: /app/ansible_poc/roles/custom_facts/templates/facts.d/getdate.fact
+          dest: /etc/ansible/facts.d/getdate.fact
+          mode: 0755
+ 
+      - name: Copy custom facts to host machine
+        copy:
+          src: /app/ansible_poc/roles/custom_facts/templates/facts.d/getrole.fact
+          dest: /etc/ansible/facts.d/getrole.fact
+          mode: 0755
+
+      - name: Reloading facts
+        setup:
+
+      - name: Display date message
+        debug:
+          msg: "{{ ansible_local.getdate.date }}"
+
+      - name: Display role message
+        debug:
+          msg: "{{ ansible_local.getrole.role }}"
+
+      - name: Display host name message
+        debug:
+          msg: "{{ ansible_hostname }}"
+
+      - name: Display node name message
+        debug:
+          msg: "{{ ansible_nodename }}"
+        when: ansible_nodename == "ansibleclient.test.com"
+
+
+
+...

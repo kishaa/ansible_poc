@@ -1,6 +1,2 @@
 ---
-# handlers file for /app/ansible/roles/apache
-  - name: restart nginx
-    service:
-      name: nginx
-      state: restarted
+# handlers file for /app/ansible_poc/roles/nginx
