@@ -1,0 +1,8 @@
+[centos]
+name=centos
+baseurl=http://centos.mirrors.estointernet.in/7/os/x86_64/
+#proxy=http://10.246.55.60:8080
+#proxy_username=kisagarw
+#proxy_password=Anna@2606
+#baseurl=http://centos.excellmedia.net/7.5.1804/os/x86_64/
+gpgcheck=0

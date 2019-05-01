@@ -1,0 +1,12 @@
+---
+  - name: Installing Nginx service
+    package:
+      name: nginx
+      state: latest
+
+  - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+      notify: Check HTTP Service
+...

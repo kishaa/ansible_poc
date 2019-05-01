@@ -1,0 +1,45 @@
+---
+  - name: Updating centos.repo file
+     copy:
+       src: /files/centos.repo
+       destination: /etc/yum.repos.d/centos.repo/
+     when: ansible_hostname == "ansible*"
+
+  - name: Installing EPEL repo
+    yum:
+      name: epel-release
+      update_cache: yes
+      state: latest
+    when: ansible_hostname == "nodemanager"
+
+  - name: Installing patch utility on machines
+    yum:
+      name: patch
+      update_cache: yes
+      state: latest
+    when: ansible_hostname == "nodemanager"
+
+  - name: Creates a directory to place nginx html files
+    file:
+      path: /app/nginx/html
+      recurse: yes
+      state: directory
+
+  - name: Setting up firewall to run nginx
+    firewalld:
+      port: 8080/tcp
+      service: http
+      permanent: yes
+      state: enabled
+    notify: Firewalld services restarted
+
+ - name: Creating welcome page for nginx service
+     template:
+       src: templates/index.html.j2
+       dest: /app/nginx/html/index.html
+       mode: 0644
+
+
+
+
+...
