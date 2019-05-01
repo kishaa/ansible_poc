@@ -5,8 +5,9 @@
       state: latest
 
   - name: Restart nginx
-      service:
-        name: nginx
-        state: restarted
+    service:
+      name: nginx
+      state: restarted
       notify: Check HTTP Service
 ...
+

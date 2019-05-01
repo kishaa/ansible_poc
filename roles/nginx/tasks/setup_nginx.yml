@@ -1,9 +1,9 @@
 ---
+# Setting up nginx
   - name: Updating centos.repo file
     copy:
-      src: /files/centos.repo
-      dest: /etc/yum.repos.d/centos.repo/
-    when: ansible_hostname == "ansible*"
+      src: /app/ansible_poc/roles/nginx/files/centos.repo
+      dest: /etc/yum.repos.d/centos.repo
 
   - name: Installing EPEL repo
     yum:
@@ -24,22 +24,32 @@
       path: /app/nginx/html
       recurse: yes
       state: directory
+      
+  - name: Changing Default configuration of nginx
+    copy:
+      src: /app/ansible_poc/roles/nginx/files/nginx_default.conf
+      dest: /etc/nginx/nginx.conf
+
 
   - name: Setting up firewall to run nginx
     firewalld:
-      port: 8080/tcp
       service: http
+      permanent: yes
+      state: enabled
+    notify: Firewalld services restarted
+   
+  - name: Setting up firewall to run nginx
+    firewalld:
+      port: 8080/tcp
       permanent: yes
       state: enabled
     notify: Firewalld services restarted
 
   - name: Creating welcome page for nginx service
     template:
-      src: templates/index.html.j2
+      src: /app/ansible_poc/roles/nginx/templates/index.html.j2
       dest: /app/nginx/html/index.html
       mode: 0644
 
-
-
-
 ...
+
