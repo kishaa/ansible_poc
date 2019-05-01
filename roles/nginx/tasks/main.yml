@@ -1,9 +1,6 @@
 ---
 # tasks file for /app/ansible_poc/roles/nginx
-  - name: Setting up environment for nginx
-    hosts: linux
-
-    import_tasks: setup_nginx.yml
-    import_tasks: install_nginx.yml
+  - include: setup_nginx.yml
+  - include: install_nginx.yml
 
 ...

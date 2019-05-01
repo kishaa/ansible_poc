@@ -1,9 +1,9 @@
 ---
   - name: Updating centos.repo file
-     copy:
-       src: /files/centos.repo
-       destination: /etc/yum.repos.d/centos.repo/
-     when: ansible_hostname == "ansible*"
+    copy:
+      src: /files/centos.repo
+      destination: /etc/yum.repos.d/centos.repo/
+    when: ansible_hostname == "ansible*"
 
   - name: Installing EPEL repo
     yum:
