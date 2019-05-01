@@ -2,7 +2,7 @@
   - name: Updating centos.repo file
     copy:
       src: /files/centos.repo
-      destination: /etc/yum.repos.d/centos.repo/
+      dest: /etc/yum.repos.d/centos.repo/
     when: ansible_hostname == "ansible*"
 
   - name: Installing EPEL repo
@@ -33,11 +33,11 @@
       state: enabled
     notify: Firewalld services restarted
 
- - name: Creating welcome page for nginx service
-     template:
-       src: templates/index.html.j2
-       dest: /app/nginx/html/index.html
-       mode: 0644
+  - name: Creating welcome page for nginx service
+    template:
+      src: templates/index.html.j2
+      dest: /app/nginx/html/index.html
+      mode: 0644
 
 
 
