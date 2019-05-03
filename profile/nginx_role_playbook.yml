@@ -1,0 +1,7 @@
+---
+  - name: Calling nginx role
+    hosts: linux
+    roles:
+      - { role: /app/ansible_poc/roles/nginx }
+
+...

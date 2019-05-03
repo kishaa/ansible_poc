@@ -8,6 +8,6 @@
     service:
       name: nginx
       state: restarted
-      notify: Check HTTP Service
+    notify: Check HTTP Service
 ...
 

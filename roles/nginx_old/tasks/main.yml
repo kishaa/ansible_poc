@@ -1,6 +1,0 @@
----
-# tasks file for /app/ansible/roles/nginx
-  - import_tasks: apply_patch.yml
-  - import_tasks: install.yml
-  - import_tasks: configure_nginx.yml
-  - import_tasks: start_nginx.yml

@@ -1,4 +1,0 @@
----
-  - hosts: test-servers
-    roles:
-      - /app/ansible/roles/apache

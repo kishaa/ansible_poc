@@ -1,6 +1,7 @@
 ---
-# tasks file for /app/ansible_poc/roles/nginx
-  - import_playbook: setup_nginx.yml
-  - import_playbook: install_nginx.yml
+  - name: Importing playbook to setup nginx env
+    include: setup_nginx.yml
 
+  - name: Importing playbook to install nginx 
+    include: install_nginx.yml
 ...

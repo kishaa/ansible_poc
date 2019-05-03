@@ -1,5 +1,4 @@
 ---
-# Setting up nginx
   - name: Updating centos.repo file
     copy:
       src: /app/ansible_poc/roles/nginx/files/centos.repo
@@ -30,6 +29,10 @@
       src: /app/ansible_poc/roles/nginx/files/nginx_default.conf
       dest: /etc/nginx/nginx.conf
 
+  - name: Changing Default configuration of nginx
+    copy:
+      src: /app/ansible_poc/roles/nginx/files/nginx_default.conf
+      dest: /etc/nginx/nginx.conf.default
 
   - name: Setting up firewall to run nginx
     firewalld:

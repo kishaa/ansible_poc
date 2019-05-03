@@ -1,5 +1,0 @@
----
-  - name: Patches the machine
-    yum:
-      name: "*"
-      state: present
