@@ -2,9 +2,9 @@
 # vars file for /app/ansible_poc/roles/nginx
 
 linux_directories:
-  /app/nginx/html/
-  /etc/nginx/sites-available/
-  /etc/nginx/sites-enabled/
+  - /app/nginx/html/
+  - /etc/nginx/sites-available/
+  - /etc/nginx/sites-enabled/
 
 nginx_port: 8080
 nginx_html_directory: /app/nginx/html/
