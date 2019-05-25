@@ -48,12 +48,12 @@
       dest: "{{ nginx_html_page }}"
       mode: 0644
 
-   - name: Symbolic link /etc/nginx/sites-available/default to /etc/nginx/sites-enabled/default
-     file:
-       src: /etc/nginx/sites-available/default
-       dest: /etc/nginx/sites-enabled/default
-       state: link
-     when: ansible_distribution == "Ubuntu"
+  - name: Symbolic link /etc/nginx/sites-available/default to /etc/nginx/sites-enabled/default
+    file:
+      src: /etc/nginx/sites-available/default
+      dest: /etc/nginx/sites-enabled/default
+      state: link
+    when: ansible_distribution == "Ubuntu"
 
   - name: Installing firewalld
     package:
