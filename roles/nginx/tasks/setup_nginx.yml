@@ -79,6 +79,7 @@
     command: "{{ item }}"
     with_items:
       - "{{ nginx_ubuntu_commands }}"
+    when: ansible_distribution == "Ubuntu"
 
 
 ...
