@@ -15,3 +15,4 @@ nginx_html_directory: /app/nginx/html/
 nginx_html_page: /app/nginx/html/index.html
 nginx_rhel_config: /etc/nginx/nginx.conf
 nginx_ubuntu_config: /etc/nginx/sites-available/default
+nginx_ubuntu_server_name: x.x.x.x
