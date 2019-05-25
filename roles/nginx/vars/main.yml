@@ -7,7 +7,6 @@ linux_directories:
   - /etc/nginx/sites-enabled/
 
 nginx_ubuntu_commands:
-  - chown -R www-data:root /app/nginx/html/
   - firewall-cmd --zone=public --add-service=http --permanent
 
 nginx_port: 8080
