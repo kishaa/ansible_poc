@@ -75,5 +75,10 @@
       state: enabled
     notify: Firewalld/port modification
 
+  - name: Configuring Nginx for HTML pages and firewall
+    command: "{{ item }}"
+    with_items:
+      - "{{ nginx_ubuntu_commands }}"
+
 
 ...

@@ -6,6 +6,10 @@ linux_directories:
   - /etc/nginx/sites-available/
   - /etc/nginx/sites-enabled/
 
+nginx_ubuntu_commands:
+  - chown -R root:www-data /app/nginx/html/
+  - firewall-cmd --zone=public --add-service=http --permanent
+
 nginx_port: 8080
 nginx_html_directory: /app/nginx/html/
 nginx_html_page: /app/nginx/html/index.html
