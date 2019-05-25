@@ -1,0 +1,24 @@
+---
+# handlers file for /app/ansible_poc/roles/nginx
+  - name: Check HTTP Service
+    uri:
+      url: http://{{ ansible_default_ipv4.address }}:8080
+      status_code: 200
+
+  - name: Firewalld services restarted
+    firewalld:
+      port: 80/tcp
+      permanent: yes
+      state: disabled
+    listen: Firewalld/port modification
+
+  - name: Firewalld services restarted
+    service:
+      name: firewalld
+      state: reloaded
+    listen: Firewalld/port modification
+  
+  - name: Start firewalld
+    service:
+      name: firewalld
+      state: restarted

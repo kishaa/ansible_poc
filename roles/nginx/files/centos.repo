@@ -1,6 +1,8 @@
 [centos]
 name=centos
-baseurl=http://centos.mirrors.estointernet.in/7/os/x86_64/
+sslverify=0
+baseurl=http://repos.del.extreme-ix.org/centos/7/os/x86_64/
+#baseurl=http://centos.mirrors.estointernet.in/7/os/x86_64/
 #proxy=http://10.246.55.60:8080
 #proxy_username=kisagarw
 #proxy_password=Anna@2606

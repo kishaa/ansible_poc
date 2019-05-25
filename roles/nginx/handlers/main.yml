@@ -1,11 +1,6 @@
 ---
 # handlers file for /app/ansible_poc/roles/nginx
-  - name: Check HTTP Service
-    uri:
-      url: http://{{ ansible_default_ipv4.address }}:8080
-      status_code: 200
+  - name: Calling Handlers
+    include: nginx_handlers.yml 
+    
 
-  - name: Firewalld services restarted
-    service:
-      name: firewalld
-      state: reloaded
