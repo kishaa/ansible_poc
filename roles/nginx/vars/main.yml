@@ -8,6 +8,7 @@ linux_directories:
 
 nginx_ubuntu_commands:
   - firewall-cmd --zone=public --add-service=http --permanent
+  - firewall-cmd --zone=public --add-port=8080/tcp --permanent
 
 nginx_port: 8080
 nginx_html_directory: /app/nginx/html/
