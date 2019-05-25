@@ -22,53 +22,58 @@
   - name: Creates a directory to place nginx files
     file:
       path: "{{ item }}"
+      owner: 'root'
+      group: 'root'
+      mode: 2755
       recurse: yes
       state: directory
     with_items:
       - "{{ linux_directories }}"
 
-  # - name: Creates a directory to place nginx html files
-  #   file:
-  #     path: /app/nginx/html
-  #     recurse: yes
-  #     state: directory
-  #
-  # - name: Changing Default configuration of nginx
-  #   copy:
-  #     src: /app/ansible_poc/roles/nginx/files/nginx_default.conf
-  #     dest: /etc/nginx/nginx.conf
-  #
-  #
-  # - name: Changing Default configuration of nginx
-  #   copy:
-  #     src: /app/ansible_poc/roles/nginx/files/nginx_default.conf
-  #     dest: /etc/nginx/sites-available/default
-  #   when: ansible_distribution == "Ubuntu"
-  #
-  # - name: Installing firewalld
-  #   package:
-  #     name: firewalld
-  #     state: latest
-  #   notify: Start firewalld
-  #
-  # - name: Setting up firewall to run nginx
-  #   firewalld:
-  #     service: http
-  #     permanent: yes
-  #     state: enabled
-  #   notify: Firewalld/port modification
-  #
-  # - name: Setting up firewall to run nginx
-  #   firewalld:
-  #     port: 8080/tcp
-  #     permanent: yes
-  #     state: enabled
-  #   notify: Firewalld/port modification
-  #
-  # - name: Creating welcome page for nginx service
-  #   template:
-  #     src: /app/ansible_poc/roles/nginx/templates/index.html.j2
-  #     dest: /app/nginx/html/index.html
-  #     mode: 0644
-  #
+  - name: Changing Default configuration of nginx
+    template:
+      src: /app/ansible_poc/roles/nginx/templates/nginx_rhel_conf.j2
+      dest: "{{ nginx_rhel_config }}"
+    when: ansible_distribution == "RedHat"
+
+  - name: Changing Default configuration of nginx
+    template:
+      src: /app/ansible_poc/roles/nginx/templates/nginx_ubuntu_conf.j2
+      dest: "{{ nginx_ubuntu_config }}"
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Creating welcome page for nginx service
+    template:
+      src: /app/ansible_poc/roles/nginx/templates/index.html.j2
+      dest: "{{ nginx_html_page }}"
+      mode: 0644
+
+   - name: Symbolic link /etc/nginx/sites-available/default to /etc/nginx/sites-enabled/default
+     file:
+       src: /etc/nginx/sites-available/default
+       dest: /etc/nginx/sites-enabled/default
+       state: link
+     when: ansible_distribution == "Ubuntu"
+
+  - name: Installing firewalld
+    package:
+      name: firewalld
+      state: latest
+    notify: Start firewalld
+
+  - name: Setting up firewall to run nginx
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+    notify: Firewalld/port modification
+
+  - name: Setting up firewall to run nginx
+    firewalld:
+      port: 8080/tcp
+      permanent: yes
+      state: enabled
+    notify: Firewalld/port modification
+
+
 ...

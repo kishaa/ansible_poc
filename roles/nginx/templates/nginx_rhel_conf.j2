@@ -36,10 +36,10 @@ http {
     include /etc/nginx/conf.d/*.conf;
 
     server {
-        listen       8080 default_server;
-        listen       [::]:8080 default_server;
+        listen       {{ nginx_port }} default_server;
+        listen       [::]:{{ nginx_port }} default_server;
         server_name  _;
-        root         /app/nginx/html;
+        root         {{ nginx_html_directory }};
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;

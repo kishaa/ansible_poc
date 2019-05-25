@@ -1,28 +1,4 @@
 ---
 # vars file for /app/ansible_poc/roles/nginx
-
-linux_directories:
-  /app:
-    owner: '0'
-    group: '0'
-    mode: 0755
-  /app/nginx:
-    owner: '0'
-    group: '0'
-    mode: 2755
-  /app/nginx/html/:
-    owner: '0'
-    group: '0'
-    mode: 2755
-  /etc/nginx:
-    owner: 'root'
-    group: 'root'
-    mode: 0755
-  /etc/nginx/sites-available:
-    owner: 'root'
-    group: 'root'
-    mode: 0755
-  /etc/nginx/sites-enabled:
-    owner: 'root'
-    group: 'root'
-    mode: 0755
+  - name: Calling variables
+    include: nginx_vars.yml 
