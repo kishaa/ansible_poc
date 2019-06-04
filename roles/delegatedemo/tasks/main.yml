@@ -3,7 +3,7 @@
 
   - name: Creates a directory
     file:
-      path: /home/vagrant/test_directory_by_"{{ ansible.hostname }}"
+      path: "/home/vagrant/test_directory_by_{{ ansible_hostname }}"
       owner: 'root'
       group: 'root'
       mode: 0755
@@ -13,7 +13,7 @@
 
   - name: Creates a directory
     file:
-      path: /home/vagrant/test_directory_by_"{{ ansible.hostname }}"/test
+      path: "/home/vagrant/test_directory_by_{{ ansible_hostname }}/test"
       owner: 'root'
       group: 'root'
       mode: 0755
