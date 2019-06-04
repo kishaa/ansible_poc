@@ -1,2 +1,21 @@
 ---
 # tasks file for /app/ansible_poc/roles/delegatedemo
+
+  - name: Creates a directory
+    file:
+      path: /home/vagrant/test_directory_by_"{{ ansible.hostname }}"
+      owner: 'root'
+      group: 'root'
+      mode: 0755
+      recurse: yes
+      state: directory
+    delegate_to: ubuntuclient
+
+  - name: Creates a directory
+    file:
+      path: /home/vagrant/test_directory_by_"{{ ansible.hostname }}"/test
+      owner: 'root'
+      group: 'root'
+      mode: 0755
+      state: touch
+    delegate_to: ubuntuclient

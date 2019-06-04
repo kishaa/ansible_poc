@@ -1,2 +1,8 @@
 ---
 # vars file for /app/ansible_poc/roles/delegatedemo
+
+test_directory:
+  - /home/vagrant/test_directory_by_
+
+test_file:
+  - /home/vagrant/test_directory_by_

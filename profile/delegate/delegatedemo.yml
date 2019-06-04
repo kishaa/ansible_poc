@@ -1,0 +1,7 @@
+---
+  - name: Calling delegatedemo role
+    hosts: centos
+    roles:
+      - { role: /app/ansible_poc/roles/delegatedemo }
+
+...
