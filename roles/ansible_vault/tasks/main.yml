@@ -1,2 +1,6 @@
 ---
 # tasks file for /app/ansible_poc/roles/ansible_vault
+  - name: Getting all the vars of this playbook
+    debug:
+      msg: "{{ item }}"
+    with_items: "{{ greeting }}"

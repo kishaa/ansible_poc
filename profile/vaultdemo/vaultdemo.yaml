@@ -1,0 +1,5 @@
+---
+- name: Calling vault role
+  hosts: all
+  roles:
+  - { role: /app/ansible_poc/roles/ansible_vault }

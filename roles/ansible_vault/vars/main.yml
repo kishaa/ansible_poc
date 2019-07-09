@@ -1,2 +1,5 @@
 ---
 # vars file for /app/ansible_poc/roles/ansible_vault
+greeting:
+  - "Hello this is from greeting variable"
+  - "Have a nice day ahead"
