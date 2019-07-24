@@ -1,0 +1,12 @@
+#!/bin/bash 
+source $1 >/home/vagrant/ping.out>&1
+ 
+ TARGET=${target:-127.0.0.1}
+ping -c 1 ${TARGET} >/home/vagrant/ping.out 2>/home/vagrant/ping.err
+
+if [ $? == 0 ];
+then
+echo "{\"changed\": true, \"rc\": 0}"
+else
+  echo "{\"failed\": true, \"msg\": \"failed to ping\", \"rc\": 1}"
+fi
