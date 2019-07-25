@@ -1,2 +1,8 @@
 ---
 # tasks file for /app/ansible_poc/roles/kafka
+  - name: Importing playbook to setup kafka env
+    include: configure_kafka.yml
+
+  - name: Importing playbook to install kafka
+    include: install_kafka.yml
+...

@@ -2,6 +2,7 @@
 # vars file for /application/ansible_poc/roles/kafka
 linux_directories:
   - /application/kafka
+  - /application/download
 
 application_ports:
   - 9092
@@ -10,5 +11,6 @@ kafka_owner: kafka
 kafka_group: root
 kafka_uid: 3001
 kafka_gid: 3002
-kafka_package_url:
-package_download_dir:
+kafka_package_url: http://mirrors.estointernet.in/apache/kafka/2.3.0/kafka_2.11-2.3.0.tgz
+package_download_dir: /application/download
+kafka_home_dir: /application/kafka

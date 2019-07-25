@@ -4,7 +4,7 @@
       url: "{{ kafka_package_url}}"
       dest: "{{ package_download_dir }}"
 
-  - name: Unarchiving that kafka package
+  - name: Unarchiving kafka package
     unarchive:
       src: "{{ package_download_dir }}"
-      dest: "{{ linux_directories }}"
+      dest: "{{ kafka_home_dir }}"

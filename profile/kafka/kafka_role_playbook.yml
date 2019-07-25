@@ -1,0 +1,7 @@
+---
+  - name: Calling kafka role
+    hosts: linux
+    roles:
+      - { role: /app/ansible_poc/roles/kafka }
+
+...
