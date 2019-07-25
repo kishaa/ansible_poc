@@ -8,12 +8,13 @@ application_ports:
   - 9092/tcp
   - 2181/tcp
 application_configs:
-  - templates:
-      kafka_service.j2
-      zookeeper_service.j2
-  - service_name:
-      kafka.service
-      zookeeper.service
+  - application:
+     - name: kafka
+       template: kafka_service.j2
+       service_name: kafka.service
+     - name: zookeeper
+     - template: zookeeper_service.j2
+       service_name: zookeeper.service
 
 kafka_owner: kafka
 kafka_group: root

@@ -14,8 +14,9 @@
 
   - name: Setting up services file for zookeeper and kafka
     template:
-      src: templates/"{{item.templates}}"
-      dest: "{{ service_dir }}/{{item.service_name}}"
+      src: templates/"{{ item.templates }}"
+      dest: "{{ service_dir }}/{{ item.service_name }}"
       mode: 0755
-      with_items:
+      with_subelements:
         - "{{ application_configs }}"
+        - "{{ application }}"
