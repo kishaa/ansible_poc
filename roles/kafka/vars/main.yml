@@ -10,3 +10,5 @@ kafka_owner: kafka
 kafka_group: root
 kafka_uid: 3001
 kafka_gid: 3002
+kafka_package_url:
+package_download_dir:

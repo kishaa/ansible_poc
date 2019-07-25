@@ -1,0 +1,10 @@
+---
+  - name: Getting kafka package
+    get_url:
+      url: "{{ kafka_package_url}}"
+      dest: "{{ package_download_dir }}"
+
+  - name: Unarchiving that kafka package
+    unarchive:
+      src: "{{ package_download_dir }}"
+      dest: "{{ linux_directories }}"
