@@ -11,3 +11,11 @@
       remote_src: yes
       extra_opts:
       - --strip-components=1
+
+  - name: Setting up services file for zookeeper and kafka
+    template:
+      src: templates/"{{item.templates}}"
+      dest: "{{ service_dir }}/{{item.service_name}}"
+      mode: 0755
+      with_items:
+        - "{{ application_configs }}"

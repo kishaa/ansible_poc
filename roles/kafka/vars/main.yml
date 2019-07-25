@@ -7,6 +7,14 @@ linux_directories:
 application_ports:
   - 9092/tcp
   - 2181/tcp
+application_configs:
+  - templates:
+      kafka_service.j2
+      zookeeper_service.j2
+  - service_name:
+      kafka.service
+      zookeeper.service
+
 kafka_owner: kafka
 kafka_group: root
 kafka_uid: 3001
@@ -15,3 +23,4 @@ kafka_package_url: http://mirrors.estointernet.in/apache/kafka/2.3.0/kafka_2.11-
 package_download_dir: /application/download/
 kafka_home_dir: /application/kafka/
 package_location: /application/download/kafka_2.11-2.3.0.tgz
+service_dir: /etc/systemd/system/
