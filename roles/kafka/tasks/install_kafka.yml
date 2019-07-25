@@ -17,5 +17,5 @@
       src: "templates/{{ item.templates }}"
       dest: "{{ service_dir }}/{{ item.service_name }}"
       mode: 0755
-      with_items:
-        - "{{ application_configs }}"
+    with_items:
+      - "{{ application_configs }}"
