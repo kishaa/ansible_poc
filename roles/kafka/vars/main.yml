@@ -1,2 +1,12 @@
 ---
-# vars file for /app/ansible_poc/roles/kafka
+# vars file for /application/ansible_poc/roles/kafka
+linux_directories:
+  - /application/kafka
+
+application_ports:
+  - 9092
+  - 2181
+kafka_owner: kafka
+kafka_group: root
+kafka_uid: 3001
+kafka_gid: 3002

@@ -1,0 +1,42 @@
+---
+  - name: Creates a group for kafka
+    group:
+      name: "{{ kafka_group }}"
+      gid: "{{ kafka_gid }}"
+      state: present
+
+  - name: Creates a owner for kafka
+    user:
+      name: "{{ kafka_owner }}"
+      uid: "{{ kafka_uid }}"
+      append: yes
+      group: "{{ kafka_group }}"
+
+  - name: Creates a directory to place kafka
+    file:
+      path: "{{ item }}"
+      owner: "{{ kafka_owner}}"
+      group: "{{ kafka_group}}"
+      mode: 0755
+      recurse: yes
+      state: directory
+    with_items:
+      - "{{ linux_directories }}"
+
+  - name: Install firewalld services on machine
+    package:
+      name: firewalld
+      state: latest
+
+  - name: Restarting firewalld services
+    service:
+      name: firewalld
+      state: restarted
+
+  - name: Opening port for zookeeper and kafka
+    firewalld:
+      port: "{{ item }}"
+      permanent: true
+      state: enabled
+    with_items:
+      - "{{ application_ports }}"
