@@ -3,11 +3,13 @@
 linux_directories:
   - /application/kafka/
   - /application/download/
+  - /application/data/kafka/
+  - /application/data/zookeeper/
 
 application_ports:
   - 9092/tcp
   - 2181/tcp
-  
+
 application_configs:
   - template: kafka_service.j2
     service_name: kafka.service
@@ -23,3 +25,16 @@ package_download_dir: /application/download/
 kafka_home_dir: /application/kafka/
 package_location: /application/download/kafka_2.11-2.3.0.tgz
 service_dir: /etc/systemd/system/
+kafka_conf_dir: /application/kafka/config
+
+zookeeper.connect_host: 192.168.111.29:2181, 192.168.111.31:2181
+zookeeper_port: 2181
+kafka_port: 9092
+kafka_data_dir: /application/data/kafka/
+zookeeper_data_dir: /application/data/zookeeper/
+zookeeper_tickTime: 2000
+zookeeper_initLimit: 5
+zookeeper_syncLimit: 2
+zookeeper_server:
+  - 1=192.168.111.29:2888:3888
+  - 2=192.168.111.31:2888:3888

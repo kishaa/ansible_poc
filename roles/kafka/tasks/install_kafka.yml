@@ -19,3 +19,9 @@
       mode: 0755
     with_items:
       - "{{ application_configs }}"
+
+  - name: Setting up services file for zookeeper and kafka
+    template:
+      src: templates/zookeeper_properties.j2
+      dest: "{{ kafka_conf_dir }}/zookeeper.properties"
+      mode: 0755
