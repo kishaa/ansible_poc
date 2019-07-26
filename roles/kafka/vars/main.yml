@@ -20,7 +20,7 @@ kafka_owner: kafka
 kafka_group: root
 kafka_uid: 3001
 kafka_gid: 0
-kafka_package_url: http://mirrors.estointernet.in/apache/kafka/2.3.0/kafka_2.11-2.3.0.tgz
+kafka_package_url: http://apachemirror.wuchna.com/kafka/2.3.0/kafka_2.11-2.3.0.tgz
 package_download_dir: /application/download/
 kafka_home_dir: /application/kafka/
 package_location: /application/download/kafka_2.11-2.3.0.tgz
