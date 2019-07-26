@@ -10,7 +10,7 @@ application_ports:
   - 9092/tcp
   - 2181/tcp
 
-application_configs:
+service_config:
   - template: kafka_service.j2
     service_name: kafka.service
   - template: zookeeper_service.j2
@@ -38,3 +38,8 @@ zookeeper_syncLimit: 2
 zookeeper_server:
   - 1=192.168.111.29:2888:3888
   - 2=192.168.111.31:2888:3888
+application_config:
+  - template: server_properties.j2
+    service_name: server.properties
+  - template: zookeeper_properties.j2
+    service_name: zookeeper.properties

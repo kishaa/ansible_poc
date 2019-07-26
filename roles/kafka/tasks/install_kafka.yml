@@ -18,10 +18,12 @@
       dest: "{{ service_dir }}/{{ item.service_name }}"
       mode: 0755
     with_items:
-      - "{{ application_configs }}"
+      - "{{ service_config }}"
 
-  - name: Setting up services file for zookeeper and kafka
+  - name: Configuring zookeeper and kafka properties
     template:
-      src: templates/zookeeper_properties.j2
-      dest: "{{ kafka_conf_dir }}/zookeeper.properties"
+      src: "templates/{{ item.template }}"
+      dest: "{{ kafka_data_dir }}/{{ item.service_name }}"
       mode: 0755
+    with_items:
+      - "{{ service_config }}"
