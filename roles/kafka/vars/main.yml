@@ -42,9 +42,12 @@ zookeeper_server:
   - 2=192.168.111.31:2888:3888
 application_config:
   - template: kafka_server_properties.j2
-    service_name: server.properties
+    service_name: /application/kafka/config/server.properties
   - template: zookeeper_properties.j2
-    service_name: zookeeper.properties
+    service_name: /application/kafka/config/zookeeper.properties
+  - template: myid.j2
+    service_name: /application/data/zookeeper/myid
+
 delete_topic_prop: true
 
 log_retention_config:

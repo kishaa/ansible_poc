@@ -23,7 +23,7 @@
   - name: Configuring zookeeper and kafka properties
     template:
       src: "templates/{{ item.template }}"
-      dest: "{{ kafka_conf_dir }}/{{ item.service_name }}"
+      dest: "{{ item.service_name }}"
       mode: 0755
     with_items:
       - "{{ application_config }}"
