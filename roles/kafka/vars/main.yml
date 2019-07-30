@@ -9,6 +9,8 @@ linux_directories:
 application_ports:
   - 9092/tcp
   - 2181/tcp
+  - 2888/tcp
+  - 3888/tcp
 
 service_config:
   - template: kafka_service.j2
@@ -27,7 +29,7 @@ package_location: /application/download/kafka_2.11-2.3.0.tgz
 service_dir: /etc/systemd/system/
 kafka_conf_dir: /application/kafka/config
 
-zookeeper.connect_host: 192.168.111.29:2181, 192.168.111.31:2181
+zookeeper_connect_host: 192.168.111.29:2181, 192.168.111.31:2181
 zookeeper_port: 2181
 kafka_port: 9092
 kafka_data_dir: /application/data/kafka/
@@ -39,7 +41,15 @@ zookeeper_server:
   - 1=192.168.111.29:2888:3888
   - 2=192.168.111.31:2888:3888
 application_config:
-  - template: server_properties.j2
+  - template: kafka_server_properties.j2
     service_name: server.properties
   - template: zookeeper_properties.j2
     service_name: zookeeper.properties
+delete_topic_prop: true
+
+log_retention_config:
+  - log_retention_hours: value
+  - log_retention_bytes: value
+  - log_segment_bytes: value
+  - log_retention_check_interval: value
+  - topic_partitions_num: value

@@ -31,7 +31,7 @@
   - name: Restarting firewalld services
     service:
       name: firewalld
-      state: restarted
+      state: started
 
   - name: Opening port for zookeeper and kafka
     firewalld:
