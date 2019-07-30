@@ -1,4 +1,4 @@
-# Licensed to the Apache Software Foundation (ASF) under one or more
+  # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -120,7 +120,7 @@ log.retention.check.interval.ms=300000
 # server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".
 # You can also append an optional chroot string to the urls to specify the
 # root directory for all kafka znodes.
-zookeeper.connect= {{ zookeeper.connect_host }}
+zookeeper.connect= {{ zookeeper_connect_host }}
 
 # Timeout in ms for connecting to zookeeper
 zookeeper.connection.timeout.ms=6000
@@ -133,3 +133,7 @@ zookeeper.connection.timeout.ms=6000
 # The default value for this is 3 seconds.
 # We override this to 0 here as it makes for a better out-of-the-box experience for development and testing.
 # However, in production environments the default value of 3 seconds is more suitable as this will help to avoid unnecessary, and potentially expensive, rebalances during application startup.
+
+listeners=PLAINTEXT://{{ansible_all_ipv4_addresses[1]}}:{{kafka_port}}
+advertised.listeners=PLAINTEXT://{{ansible_all_ipv4_addresses[1]}}:{{kafka_port}}
+delete.topic.enable={{delete_topic_prop}}
