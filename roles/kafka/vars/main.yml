@@ -45,8 +45,6 @@ application_config:
     service_name: /application/kafka/config/server.properties
   - template: zookeeper_properties.j2
     service_name: /application/kafka/config/zookeeper.properties
-  - template: myid.j2
-    service_name: /application/data/zookeeper/myid
 
 delete_topic_prop: true
 
