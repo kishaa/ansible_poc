@@ -1,4 +1,5 @@
 ---
-  - hosts: test-servers
-    roles:
-      - /app/ansible/roles/apache
+- hosts: localhost
+  remote_user: root
+  roles:
+    - /ansible/ansible_poc/roles/logstash

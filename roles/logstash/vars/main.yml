@@ -1,5 +1,5 @@
 ---
-# vars file for /app/ansible/roles/logstash
+# vars file for /ansible/ansible_poc/roles/logstash
 
 linux_groups:
   'logstash':

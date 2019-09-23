@@ -1,7 +1,2 @@
 ---
-# tasks file for /app/ansible/roles/apache
-  - import_tasks: apply_patch.yml
-  - import_tasks: install_java.yml
-  - import_tasks: install_apache.yml
-  - import_tasks: configure_apache.yml
-  - import_tasks: start_apache.yml
+# tasks file for /ansible/ansible_poc/roles/logstash
