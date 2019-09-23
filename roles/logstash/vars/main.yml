@@ -55,9 +55,10 @@ linux_directories:
 
 linux_packages:
   'java':
-    ensure: latest
+    ensure: present
   'logstash':
-    ensure: latest
+    url: 'https://artifacts.elastic.co/downloads/logstash/logstash-7.3.2.rpm'
+    ensure: present
 
 logstash_config_owner: 'logstash'
 logstash_config_user: 'logstash'
