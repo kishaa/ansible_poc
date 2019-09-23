@@ -4,59 +4,59 @@
 linux_groups:
   'logstash':
     state: present
-    gid: 1001
+    gid: 2001
 
 linux_users:
   'logstash':
     home: '/app/logstash'
     state: present
-    uid: 1002
-    gid: 1001
+    uid: 2002
+    group: 'logstash'
 
 linux_directories:
   /app:
     owner: '0'
     group: '0'
-    mode: 0755
+    mode: 755
   /app/logstash:
     owner: 'logstash'
     group: 'logstash'
-    mode: 2755
+    mode: 755
   /app/logstash/data:
     owner: 'logstash'
     group: 'logstash'
-    mode: 2755
+    mode: 755
   /app/logstash/logs:
     owner: 'logstash'
     group: 'logstash'
-    mode: 2755
+    mode: 755
   /app/download:
     owner: 'root'
     group: 'root'
-    mode: 0755
+    mode: 755
   /etc/logstash:
     owner: 'root'
     group: 'root'
-    mode: 0755
+    mode: 755
   /etc/logstash/conf.d:
     owner: 'logstash'
     group: 'logstash'
-    mode: 0755
+    mode: 755
   /usr/share:
     owner: 'root'
     group: 'root'
-    mode: 0755
+    mode: 755
   /usr/share/logstash:
     type: 'link'
     owner: 'root'
     group: 'root'
     target: '/app/logstash'
-    mode: 0755
+    mode: 755
 
 linux_packages:
   'java':
     ensure: latest
-  'logstash'
+  'logstash':
     ensure: latest
 
 logstash_config_owner: 'logstash'
