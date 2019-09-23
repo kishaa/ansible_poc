@@ -1,5 +1,0 @@
----
-  - name: Install latest version of Java on the machine
-    yum:
-      name: java
-      state: present
