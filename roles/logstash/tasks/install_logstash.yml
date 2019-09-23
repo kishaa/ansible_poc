@@ -1,7 +1,8 @@
 ---
 # tasks file for /ansible/ansible_poc/roles/logstash
-  - name: This will install the required package for logstash
+  - name: This will install the required package for logstash "{{ item.key}}"
     package:
-      name: "{{ item.key }}"
+      name: "{{ item.value.url }}"
       state: "{{ item.value.ensure }}"
     with_dict: "{{ linux_packages }}"
+    when: ansible_os_family  == "RedHat"

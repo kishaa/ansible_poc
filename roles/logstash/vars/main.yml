@@ -55,6 +55,7 @@ linux_directories:
 
 linux_packages:
   'java':
+    url: 'www.xyz.com'
     ensure: present
   'logstash':
     url: 'https://artifacts.elastic.co/downloads/logstash/logstash-7.3.2.rpm'
