@@ -1,0 +1,25 @@
+---
+# tasks file for /ansible/ansible_poc/roles/logstash
+  - name: Creates a group for logstash
+    group:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state }}"
+      gid: "{{ item.value.gid }}"
+    with_dict: "{{ linux_groups }}"
+
+  - name: Creates a user logstash
+    user:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state }}"
+      uid: "{{ item.value.uid }}"
+      home: "{{ item.value.home }}"
+      gid: "{{ item.value.gid }}"
+    with_dict: "{{ linux_users }}"
+
+  - name: Creates logstash logstash hierarchy
+      state : directory
+      path: "{{ item.key }}"
+      owner: "{{ item.value.owner }}"
+      group: "{{ item.value.group }}"
+      mode: "{{ item.value.mode }}"
+    with_dict: "{{ linux_directories }}"    

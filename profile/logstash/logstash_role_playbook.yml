@@ -1,0 +1,7 @@
+---
+  - name: Calling logstash role
+    hosts: linux
+    roles:
+      - { role: /ansible/ansible_poc/roles/logstash }
+
+...

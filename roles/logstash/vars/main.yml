@@ -56,6 +56,8 @@ linux_directories:
 linux_packages:
   'java':
     ensure: latest
+  'logstash'
+    ensure: latest
 
 logstash_config_owner: 'logstash'
 logstash_config_user: 'logstash'
