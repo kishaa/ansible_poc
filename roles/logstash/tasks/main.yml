@@ -1,5 +1,8 @@
 ---
 # tasks file for /ansible/ansible_poc/roles/logstash
 
-  - name: Importing playbook to setup logstash env
+  - name: Importing playbook to setup environment for logstash
     include: setup_logstash.yml
+
+  - name: Importing playbook to insytall logstash
+    include: install_logstash.yml
