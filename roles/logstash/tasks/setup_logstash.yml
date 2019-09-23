@@ -12,12 +12,12 @@
       name: "{{ item.key }}"
       state: "{{ item.value.state }}"
       uid: "{{ item.value.uid }}"
-      home: "{{ item.value.home }}"
-      gid: "{{ item.value.gid }}"
+      group: "{{ item.value.group }}"
     with_dict: "{{ linux_users }}"
 
   - name: Creates logstash logstash hierarchy
-      state : directory
+    file:  
+      state: directory
       path: "{{ item.key }}"
       owner: "{{ item.value.owner }}"
       group: "{{ item.value.group }}"
